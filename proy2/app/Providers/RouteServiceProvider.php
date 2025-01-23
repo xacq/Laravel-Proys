@@ -7,14 +7,12 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 class RouteServiceProvider extends ServiceProvider
 {
     /**
-     * El espacio de nombres para los controladores de la API.
      *
      * @var string
      */
     public const API_NAMESPACE = 'App\\Http\\Controllers';
 
     /**
-     * Defina las rutas para la aplicación.
      *
      * @return void
      */
@@ -24,7 +22,6 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Mapea las rutas de la API.
      *
      * @return void
      */
