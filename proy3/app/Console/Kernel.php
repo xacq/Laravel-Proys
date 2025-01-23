@@ -17,11 +17,9 @@ class Kernel extends ConsoleKernel
         require base_path('routes/console.php');
     }
 
-    /**
-     * Define the application's command schedule.
-     */
+    //DEFINO LOS PARAMETROS PARA EL CRON JOB
     protected function schedule(Schedule $schedule)
-    {
+    {        //DETERMINO EL COMANDO, LA HORA, LAUBICACION DEL REGISTRO Y EL CORREO PARA GESTIONAR UNA ANOMALIA
         $schedule->command('report:generate')
                  ->dailyAt('02:00')
                  ->sendOutputTo(storage_path('storage/logs/laravel.log'))
