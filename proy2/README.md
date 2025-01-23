@@ -39,7 +39,6 @@ Archivo de exportación de Postman para probar la API.
 php artisan make:model Product -m
 
    INFO  Model [C:\proy2\app\Models\Product.php] created successfully.
-
    INFO  Migration [C:\proy2\database\migrations/2025_01_22_233518_create_products_table.php] created successfully.
 
 ### Paso 2. Se arregla los otros campos que van para esta tabla en el archivo 2025_01_22_233518_create_products_table.php:
@@ -59,19 +58,19 @@ php artisan migrate
 
 ### Paso 5. Se genera el controlador para recursos CRUD
 
-php artisan make:controller ProductController
+    php artisan make:controller ProductController
 
-  INFO  Controller [C:\proy2\app\Http\Controllers\ProductController.php] created successfully.
+INFO  Controller [C:\proy2\app\Http\Controllers\ProductController.php] created successfully.
 
 ### Paso 6. Editamos el controlador generado ProductController.php
 
-use App\Models\Product;
-
 en index:
+
         $products = Product::all();
         return response()->json(['data' => $products], Response::HTTP_OK);
         
 En store:
+
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
@@ -80,6 +79,7 @@ En store:
         ]);
 
 En show:
+
         $product = Product::find($id);
 
         if (!$product) {
@@ -90,25 +90,25 @@ En show:
 
 ### Paso 7. Se edita las rutas en urls
 
-Route::get('/products', [ProductController::class, 'index']);
-Route::get('/products/{id}', [ProductController::class, 'show']);
-Route::post('/products', [ProductController::class, 'store']);
+    Route::get('/products', [ProductController::class, 'index']);
+    Route::get('/products/{id}', [ProductController::class, 'show']);
+    Route::post('/products', [ProductController::class, 'store']);
 
 ### Paso 8. Se genera la documentación Swagger y la publicamos (considerar no tener antivirus activo en la instalacion)
+    
+    composer require darkaonline/l5-swagger
+    php artisan vendor:publish --provider="L5Swagger\L5SwaggerServiceProvider"
+   
+INFO  Publishing assets.
+Copying file [C:\proy2\vendor\darkaonline\l5-swagger\config\l5-swagger.php] to [C:\proy2\config\l5-swagger.php] ................ DONE
+Copying directory [C:\proy2\vendor\darkaonline\l5-swagger\resources\views] to [C:\proy2\resources\views\vendor\l5-swagger] ..... DONE
 
-- composer require darkaonline/l5-swagger
-- php artisan vendor:publish --provider="L5Swagger\L5SwaggerServiceProvider"
-   INFO  Publishing assets.
-
-  Copying file [C:\proy2\vendor\darkaonline\l5-swagger\config\l5-swagger.php] to [C:\proy2\config\l5-swagger.php] ...................... DONE
-  Copying directory [C:\proy2\vendor\darkaonline\l5-swagger\resources\views] to [C:\proy2\resources\views\vendor\l5-swagger] ........... DONE
-
-- php artisan l5-swagger:generate
-- composer require zircote/swagger-php
+        php artisan l5-swagger:generate
+        composer require zircote/swagger-php
 
 Debido a actualizacion de Laravel, ahora ya no genera automaticamente el api.php sino que hay que gestionarlo a traves de la instruccion 
 
-- php artisan install:api
+    php artisan install:api
 
 Solo asi se registra esta ruta y puede funcionar la visualizacion de la informacion desde la base de datos al API
 
@@ -116,14 +116,16 @@ Solo asi se registra esta ruta y puede funcionar la visualizacion de la informac
 
 Creamos un seeder para poner informacion en la tabla products
 
-- php artisan make:seeder ProductSeeder
-- Editamos el seeder con el formato 
-    Product::create([
-          'name' => 'Cámara Canon EOS Rebel T8i',
-          'description' => 'Una cámara DSLR para fotografía profesional.',
-          'price' => 799.99,
-          'stock' => 40,
+    php artisan make:seeder ProductSeeder
+- Editamos el seeder con el formato
+  
+        Product::create([
+        'name' => 'Cámara Canon EOS Rebel T8i',
+        'description' => 'Una cámara DSLR para fotografía profesional.',
+        'price' => 799.99,
+        'stock' => 40,
         ]);
+  
 - php artisan db:seed --class=ProductSeeder
 - probamos corriendo la aplicacion con el servidor php artisan serve bajo la direccion 
     http://127.0.0.1:8000/api/documentation (en localhost)
