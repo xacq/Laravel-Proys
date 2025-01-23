@@ -12,5 +12,5 @@
 ### Despues de crear un poryecto de Laravel, es necesario ejecutar los siguientes comandos
 - npm install
 - npm run build
-- composer run dev
+- composer install
 
