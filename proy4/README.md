@@ -140,3 +140,4 @@ Este es el secreto del webhook de Stripe. Se utiliza para verificar la autentici
     Log::info('Evento de Stripe recibido: ' . $event->type);// REGISTRO PERSONALIZADO DE EVENTOS EN EL LOG
     Log::info('Monto pagado: ' . $data->amount_paid); // REGISTRO PERSONALIZADO DE MONTO PAGADO EN EL LOG
 
+* EL ARCHIVO SQL ESTA EN LA CARPETA PRINCIPAL proy4.sql
