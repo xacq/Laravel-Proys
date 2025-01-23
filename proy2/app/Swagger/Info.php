@@ -14,5 +14,5 @@ namespace App\Swagger;
  */
 class Info
 {
-    // Este archivo solo contiene la anotación @OA\Info, sin lógica adicional.
+
 }
