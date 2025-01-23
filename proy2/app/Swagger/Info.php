@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Swagger;
-
+// Establezco la informacion para la info en la documentacion de swagger
 /**
  * @OA\Info(
  *     title="Product API",
