@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 
 class ProductController extends Controller
-{    // Instrucciones Swagger para obtener la lista de los productos
+{    // OBTENER LISTA DE PRODUCTOS
     /**
      * @OA\Get(
      *     path="/api/products",
@@ -16,10 +16,10 @@ class ProductController extends Controller
      * )
      */
     public function index()
-    {
+    {    // RETORNA TODOS LOS PRODUCTOS CON ESTADO 200
         return response()->json(Product::all(), 200);
     }
-    // instrucciones para crear un producto a traves del api
+    // CREACION DE UN PRODUCTO EN EL API
     /**
      * @OA\Post(
      *     path="/api/products",
@@ -44,16 +44,16 @@ class ProductController extends Controller
      * )
      */
     public function store(Request $request)
-    {
+    {    //VALIDA LOS DATOS INGRESADOS SEGUN EL MODELO ESTABLECIDO
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0.01',
             'stock' => 'required|integer|min:0',
         ]);
-
+        //CREA UN NUEVO PRODUCTO TOMANDO EN CUENTA LA VALIDACION ESTABLECIDA
         $product = Product::create($validatedData);
-
+        //RETORNA UN JASON CON EL PRODUCTO CREADO
         return response()->json($product, 201);
     }
     // INTRUCCIONES PARA CONSEGUIR UN PRODUCTO ESPCEIFICO A TRAVES DEL ID DEL PRODUCTO USANDO DEL API
@@ -77,13 +77,14 @@ class ProductController extends Controller
      * )
      */
     public function show($id)
-    {
+    {    //BUSCA UN PRODUCTO SEUN EL ID PARAMETRIZADO EN LA FUNCION
         $product = Product::find($id);
-
+        //CONDICIONA SU EXISTENCIA
         if (!$product) {
+            //RETORNA UN MENSAJE DE NO EXISTIR
             return response()->json(['error' => 'Product not found'], 404);
         }
-
+        //RETORNA EL REGISTRO PRODUCTO ENCONTRADO    
         return response()->json($product, 200);
     }
 
