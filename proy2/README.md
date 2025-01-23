@@ -32,7 +32,7 @@ Documentación de la API.
 Klicana Laravel DEV: Ejercicio 3
 Archivo de exportación de Postman para probar la API.
 
-## SOLUCION con SQLite
+## SOLUCION
 
 ### Paso 1. Generamos el modelo y la migracion para Product con lo que generamos el archivo para migrarlo
 
