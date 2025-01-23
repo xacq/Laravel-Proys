@@ -12,7 +12,7 @@ class ProductSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
-    {
+    {    //SE GESTIONO MAS DATOS PARA TENER UN VOLUMEN DE INFORMACION MAYOR PARA TRABAJAR
         Product::create([
             'name' => 'Laptop Dell XPS 13',
             'description' => 'Una laptop ultraligera con pantalla de alta resolución.',
