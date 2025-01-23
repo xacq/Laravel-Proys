@@ -19,7 +19,7 @@
 
 ### Paso 1. Crear una migración para agregar la columna
 
-php artisan make:migration add_phone_number_to_users_table --table=users
+    php artisan make:migration add_phone_number_to_users_table --table=users
 
 ### Paso 2. Revisar el resultado en carpeta database/migrations/ en la creacion del archivo:
 
@@ -27,35 +27,38 @@ php artisan make:migration add_phone_number_to_users_table --table=users
 
 ### Paso 3. Añadir las instrucciones para configurar el nuevo campo asi como crear la columna en la tabla
 
-Dentro de la funcion public function up()
+Dentro de la funcion up
+
+    public function up()
     $table->string('phone_number', 15)->unique()->nullable(false);
 
-Dentro de la funcion public function down()
+Dentro de la funcion down
+    
+    public function down()
     $table->dropColumn('phone_number');
 
 ### Paso 4. Generar el migrate para reflejar en la base de datos
 
-php artisan migrate
+    php artisan migrate
 
 Resultado esperado: 
  INFO  Running migrations.  
-
   2025_01_22_215151_add_phone_number_to_users_table .......................................... 3.48ms DONE
 
 ### Paso 5. Configuracion del Controller tanto para creacion y actualizacion del campo extra
 
 Tanto en el store como en el update
-$validatedData = $request->validate([
-            'phone_number' => ['required', 'string', 'max:15', 'regex:/^[0-9]+$/', 'unique:users,phone_number'],
-        ]);
 
+    $validatedData = $request->validate([
+                'phone_number' => ['required', 'string', 'max:15', 'regex:/^[0-9]+$/', 'unique:users,phone_number'],
+            ]);
 
 ### Paso 6. Configuracion del Seeder para tabla users
 
-php artisan make:seeder UsersTableSeeder
+    php artisan make:seeder UsersTableSeeder
 
 ### Paso 7. Ejecucion del seeder para llenar la tabla users
 
-php artisan db:seed --class=UsersTableSeeder
+    php artisan db:seed --class=UsersTableSeeder
 
-* ARCHIVO sql EN LA CARPETA PRINCIPAL
+* ARCHIVO sql EN LA CARPETA PRINCIPAL proy1.sql
