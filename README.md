@@ -13,4 +13,6 @@
 - npm install
 - npm run build
 - composer install
+- composer run dev
+
 
