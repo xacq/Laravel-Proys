@@ -16,5 +16,5 @@ namespace App\Swagger\Schemas;
  */
 class ProductSchema
 {
-    // Este archivo puede estar vacío, solo contiene las anotaciones Swagger.
+
 }
