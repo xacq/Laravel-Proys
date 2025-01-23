@@ -87,8 +87,6 @@ class ProductController extends Controller
         return response()->json($product, 200);
     }
 
-    // Métodos adicionales (edit, update, destroy) no documentados en este caso
-
     /**
      * @OA\Schema(
      *     schema="Product",
