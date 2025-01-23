@@ -133,3 +133,5 @@ Creamos un seeder para poner informacion en la tabla products
 ### Paso 10. Importar el archivo formato postman para probar API que se encuentra en la carpeta principal
 
 - Product API.postman_collection.json
+
+* EL ARCHIVO DEL SQL DE LA BASE DE DATOS ESTA EN LA CARPETA PRINCIPAL proy2.sql
