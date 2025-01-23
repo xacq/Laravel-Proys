@@ -27,6 +27,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes(): void
     {
+        //Registro la route para el api    
         Route::prefix('api')
              ->middleware('api')
              ->namespace(self::API_NAMESPACE) 
