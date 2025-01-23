@@ -1,5 +1,5 @@
 <?php
-
+// Gestiono la estructura principal para la documentacion del API
 namespace App\Swagger\Schemas;
 
 /**
