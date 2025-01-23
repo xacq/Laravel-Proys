@@ -58,3 +58,4 @@ php artisan make:seeder UsersTableSeeder
 
 php artisan db:seed --class=UsersTableSeeder
 
+* ARCHIVO sql EN LA CARPETA PRINCIPAL
