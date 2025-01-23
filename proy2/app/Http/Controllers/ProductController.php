@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 
 class ProductController extends Controller
-{
+{    // Instrucciones Swagger para obtener la lista de los productos
     /**
      * @OA\Get(
      *     path="/api/products",
@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         return response()->json(Product::all(), 200);
     }
-
+    // instrucciones para crear un producto a traves del api
     /**
      * @OA\Post(
      *     path="/api/products",
@@ -56,7 +56,7 @@ class ProductController extends Controller
 
         return response()->json($product, 201);
     }
-
+    // INTRUCCIONES PARA CONSEGUIR UN PRODUCTO ESPCEIFICO A TRAVES DEL ID DEL PRODUCTO USANDO DEL API
     /**
      * @OA\Get(
      *     path="/api/products/{id}",
